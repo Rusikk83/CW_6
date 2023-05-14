@@ -42,8 +42,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "djoser",
+
     "rest_framework",
+    "djoser",
     "users",
     "ads",
     "redoc",
@@ -187,3 +188,4 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
 }
 
+AUTH_USER_MODEL = 'users.User'

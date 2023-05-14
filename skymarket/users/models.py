@@ -1,12 +1,15 @@
 from enum import Enum
 
-from django.contrib.auth.models import AbstractBaseUser, AbstractUser
+from django.contrib.auth.models import AbstractBaseUser#, AbstractUser
 from django.db import models
 
 from phonenumber_field.modelfields import PhoneNumberField
 from django.utils.translation import gettext_lazy as _
 
 from users.managers import UserManager
+
+
+#from ..users.managers import UserManager
 
 
 class UserRoles:
@@ -27,7 +30,7 @@ class User(AbstractBaseUser):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     phone = models.CharField(max_length=15)
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     role = models.CharField(max_length=15, choices=UserRoles.ROLE, default=UserRoles.USER)
     image = models.ImageField(upload_to='images/')
 

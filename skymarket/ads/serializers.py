@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from  ads.models import Ad
+from ads.models import Ad
 from rest_framework.relations import SlugRelatedField
 
 from users.models import User

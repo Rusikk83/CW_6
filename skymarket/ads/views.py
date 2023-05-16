@@ -2,7 +2,9 @@ from rest_framework import pagination, viewsets
 from rest_framework.permissions import AllowAny
 
 from ads.models import Ad
-from ads.serializers import AdSerializer, AdDetailSerializer
+from ads.serializers import AdSerializer, AdDetailSerializer, AdCreateSerializer
+
+
 
 
 class AdPagination(pagination.PageNumberPagination):
@@ -27,8 +29,8 @@ class AdViewSet(viewsets.ModelViewSet):
     #
     serializers = {
         "list": AdSerializer,
-        #"create": SelectionCreateSerializer,
-        "retrieve": AdDetailSerializer
+        "create": AdCreateSerializer,
+        "retrieve": AdDetailSerializer,
      }
     #
     def get_serializer_class(self):
@@ -36,6 +38,9 @@ class AdViewSet(viewsets.ModelViewSet):
     #
     # def get_permissions(self):
     #     return [permission() for permission in self.permissions.get(self.action, self.default_permission)]
+
+
+
 
 
 class CommentViewSet(viewsets.ModelViewSet):

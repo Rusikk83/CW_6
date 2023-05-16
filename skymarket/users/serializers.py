@@ -17,7 +17,7 @@ class UserRegistrationSerializer(BaseUserRegistrationSerializer):
     class Meta:
         model = User
         #fields = "__all__"
-        exclude = ['last_login', 'role']
+        exclude = ['last_login', 'role', 'image']
 
 
 class CurrentUserSerializer(serializers.ModelSerializer):

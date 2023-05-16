@@ -10,7 +10,7 @@ class Ad(models.Model):
     price = models.IntegerField()
     description = models.CharField(max_length=2000)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(null=True)
     image = models.ImageField(upload_to='django_images/', null=True)
 
 

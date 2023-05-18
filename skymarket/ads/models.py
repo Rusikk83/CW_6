@@ -13,6 +13,18 @@ class Ad(models.Model):
     created_at = models.DateTimeField(null=True)
     image = models.ImageField(upload_to='django_images/', null=True)
 
+    @property
+    def author_first_name(self):
+        return self.author.first_name if self.author else None
+
+    @property
+    def author_last_name(self):
+        return self.author.last_name if self.author else None
+
+    @property
+    def phone(self):
+        return self.author.phone if self.author else None
+
 
 class Comment(models.Model):
     # TODO добавьте поля модели здесь

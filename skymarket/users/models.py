@@ -32,7 +32,7 @@ class User(AbstractBaseUser):
     phone = models.CharField(max_length=15)
     email = models.EmailField(unique=True)
     role = models.CharField(max_length=15, choices=UserRoles.ROLE, default=UserRoles.USER)
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='django_media/', null=True)
 
     @property
     def is_superuser(self):
@@ -64,4 +64,4 @@ class User(AbstractBaseUser):
 
     # эта константа содержит список с полями,
     # которые необходимо заполнить при создании пользователя
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone', "role"]
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone']

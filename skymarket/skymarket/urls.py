@@ -7,7 +7,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from users.urls import users_router
 
-from ads.urls import router_ad, router_comment
+from ads.urls import router_ad, router_comment, router_ads_me
 
 # TODO здесь необходимо подклюючит нужные нам urls к проекту
 
@@ -17,8 +17,13 @@ urlpatterns = [
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path("api/", include(users_router.urls)),
-    path("api/", include(router_ad.urls)),
+
     path("api/ads/<int:ad_pk>/", include(router_comment.urls)),
+
+    path("api/ads/me/", include(router_ads_me.urls)),
+
+    path("api/ads/", include(router_ad.urls)),
+
     path('api/token/', TokenObtainPairView.as_view()),
     path('api/refresh/', TokenRefreshView.as_view()),
     #path("users/", include('users.urls')),

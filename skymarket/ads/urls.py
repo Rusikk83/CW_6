@@ -4,11 +4,13 @@ from django.urls import include, path
 
 from rest_framework import routers
 
-from ads.views import AdViewSet, CommentViewSet
+from ads.views import AdViewSet, CommentViewSet, AdMeViewSet
 
 router_ad = routers.SimpleRouter()
-router_ad.register('ad', AdViewSet)
+router_ad.register('', AdViewSet)
 
 router_comment = routers.SimpleRouter()
-router_comment.register('comment', CommentViewSet)
+router_comment.register('comments', CommentViewSet)
 
+router_ads_me = routers.SimpleRouter()
+router_ads_me.register('', AdMeViewSet)

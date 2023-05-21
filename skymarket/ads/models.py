@@ -31,5 +31,17 @@ class Comment(models.Model):
     text = models.CharField(max_length=5000)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     ad = models.ForeignKey(Ad, on_delete=models.CASCADE)
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(null=True)
+
+    @property
+    def author_first_name(self):
+        return self.author.first_name if self.author else None
+
+    @property
+    def author_last_name(self):
+        return self.author.last_name if self.author else None
+
+    @property
+    def author_image(self):
+        return self.author.image if self.author.image else None
 

@@ -43,5 +43,5 @@ class Comment(models.Model):
 
     @property
     def author_image(self):
-        return self.author.image if self.author.image else None
+        return self.author.image.name if self.author.image else None
 

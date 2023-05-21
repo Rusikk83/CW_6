@@ -33,7 +33,14 @@ class AdViewSet(viewsets.ModelViewSet):
         "create": AdCreateSerializer,
         "retrieve": AdDetailSerializer,
      }
-    #
+
+    def list(self, request, *args, **kwargs):
+        find_text = request.GET.get('title', None)
+        if find_text:
+            self.queryset = self.queryset.filter(title__contains=find_text)
+        return super().list(request, *args, **kwargs)
+
+
     def get_serializer_class(self):
         return self.serializers.get(self.action, self.default_serializer_class)
     #

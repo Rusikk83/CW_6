@@ -12,8 +12,14 @@ from users.models import User
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    #author = serializers.SlugRelatedField(slug_field='id', queryset=User.objects.all(), required=False)
-    #ad = serializers.SlugRelatedField(slug_field='id', queryset=User.objects.all(), required=False)
+
+    """
+    Почему то не получилось получить правильное значение для картинки пользователя (ссылки).
+    Поэтому лого в комментариях не отображаются.
+    Поле author_image через @property в модели перредает только локальную ссылку, тоже не работает
+    """
+
+    #author_image = serializers.SlugRelatedField(slug_field='image', queryset=User.objects.all(), required=False)
 
     def create(self, validated_data):
         request = self.context.get("request")
@@ -47,10 +53,7 @@ class AdSerializer(serializers.ModelSerializer):
 class AdDetailSerializer(serializers.ModelSerializer):
     # TODO сериалайзер для модели
 
-    # author_first_name = serializers.SlugRelatedField(read_only=True, slug_field='first_name')
-    # author_last_name = serializers.SlugRelatedField(slug_field='last_name', queryset=User.objects.all(), required=False)
-    # phone = serializers.SlugRelatedField(slug_field='phone', queryset=User.objects.all(), required=False)
-    # author = serializers.SlugRelatedField(slug_field='email', queryset=User.objects.all(), required=False)
+
     class Meta:
         fields = [
             'pk',
